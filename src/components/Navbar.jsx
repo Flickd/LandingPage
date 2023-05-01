@@ -10,17 +10,17 @@ const navLinks = [
   {
     icon: <RxHome />,
     title: 'Home',
-    link: 'home',
+    link: 'LandingPage/home',
   },
   {
     icon: <RxEnvelopeClosed />,
     title: 'News',
-    link: 'news',
+    link: 'LandingPage/news',
   },
   {
     icon: <RxBackpack />,
     title: 'Shop',
-    link: 'shop',
+    link: 'LandingPage/shop',
   },
 ]
 
