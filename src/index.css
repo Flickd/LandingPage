@@ -31,3 +31,7 @@
   background: url('./assets/gl_Silo.webp');
   background-size: cover;
 }
+
+.listStyle {
+  list-style-type: square;
+}

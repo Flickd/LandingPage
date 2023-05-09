@@ -15,11 +15,10 @@ const Home = () => {
 
   return (
     <>
-      <div className="text-white page-background fontNunitoRegular">
+      <div className="">
         <HomeHero />
         <HomeRecentNews />
         <HomeSlideshow />
-        <Footer />
       </div>
     </>
   )

@@ -11,16 +11,40 @@ const navLinks = [
     icon: <RxHome />,
     title: 'Home',
     link: 'LandingPage/home',
+    more: [],
   },
   {
     icon: <RxEnvelopeClosed />,
     title: 'News',
     link: 'LandingPage/news',
+    more: [
+      {
+        title: 'Patchnotes',
+        link: 'LandingPage/patchnotes',
+      },
+      {
+        title: 'Patchnotes',
+        link: 'LandingPage/patchnotes',
+      },
+    ],
   },
   {
     icon: <RxBackpack />,
     title: 'Shop',
     link: 'LandingPage/shop',
+    more: [],
+  },
+  {
+    icon: '',
+    title: 'Patchnotes',
+    link: 'LandingPage/patchnotes',
+    more: [],
+  },
+  {
+    icon: '',
+    title: 'Community',
+    link: 'LandingPage/community',
+    more: [],
   },
 ]
 
@@ -39,13 +63,20 @@ const Navbar = () => {
           <img src={logo} alt="Logo" className="w-[164px]" />
           <ul className="hidden gap-12 font-bold lg:flex">
             {navLinks.map((navLink) => (
-              <li className="flex items-center">
+              <li className="flex flex-col justify-center">
                 <Link to={`/${navLink.link}`}>
                   <div className="flex items-center gap-1 hover:text-[#fb7a0c]">
                     {navLink.icon}
                     {navLink.title}
                   </div>
                 </Link>
+                <ul>
+                  {navLink.more.map((navFurtherLink) => (
+                    <li>
+                      <Link to={navFurtherLink.link}></Link>
+                    </li>
+                  ))}
+                </ul>
               </li>
             ))}
           </ul>
