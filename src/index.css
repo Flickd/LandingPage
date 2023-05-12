@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.page-background {
-  background: url('./assets/WebpSeamless_Background.webp') left top;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
 @font-face {
   font-family: nunitoRegular;
   src: url('./fonts/Nunito/Nunito-Regular.ttf');
@@ -15,21 +9,6 @@
 
 .fontNunitoRegular {
   font-family: nunitoRegular;
-}
-
-.easter-background {
-  background: url('./assets/Easter_update_q.png');
-  background-size: cover;
-}
-
-.dc-xmas-bg {
-  background: url('./assets/LOGO_GL_XMAS.png');
-  background-size: cover;
-}
-
-.silo-bg {
-  background: url('./assets/gl_Silo.webp');
-  background-size: cover;
 }
 
 .listStyle {
