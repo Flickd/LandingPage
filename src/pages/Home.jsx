@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import Footer from '../components/Footer'
 import HomeHero from '../components/HomeHero'
 import HomeRecentNews from '../components/HomeRecentNews'
 import HomeSlideshow from '../components/HomeSlideshow'
