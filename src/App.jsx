@@ -12,11 +12,11 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="LandingPage" element={<Layout />}>
+        <Route path="/LandingPage/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="home" element={<Home />} />
-          <Route path="news" element={<News />} />
-          <Route path="patchnotes" element={<NewsPatchnotes />} />
+          <Route path="home/" element={<Home />} />
+          <Route path="news/" element={<News />} />
+          <Route path="patchnotes/" element={<NewsPatchnotes />} />
         </Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
