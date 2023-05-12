@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import HomeHero from '../components/HomeHero'
 import HomeRecentNews from '../components/HomeRecentNews'
 import HomeSlideshow from '../components/HomeSlideshow'
