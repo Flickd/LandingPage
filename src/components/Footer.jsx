@@ -12,7 +12,7 @@ const Footer = () => {
         <a href="https://discord.com/invite/galaxylife">
           <BsDiscord size={32} />
         </a>
-        <a href="https://www.instagram.com/galaxylifereborn/?hl=de">
+        <a href="https://www.instagram.com/galaxylifeofficial">
           <RxInstagramLogo size={32} />
         </a>
         <a href="">

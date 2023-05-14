@@ -32,8 +32,9 @@ const articles = [
 
 const HomeRecentNews = () => {
   return (
-    <section className="flex justify-center w-full">
-      <ul className="flex flex-col flex-wrap border-t-2 border-b-2 border-white items-center w-[90%] md:items-start md:flex-row md:justify-around">
+    <section className="flex flex-col items-center justify-center w-full">
+      <div className="w-full h-[50px] bg-gradient-to-t from-black to-transparent"></div>
+      <ul className="flex flex-col flex-wrap items-center w-full px-12 bg-black md:items-start md:flex-row md:justify-around">
         {articles.map((article) => (
           <li className="flex flex-col items-center my-8 w-[384px]">
             <div className=" flex flex-col  h-[256px] gap-2">
@@ -61,6 +62,7 @@ const HomeRecentNews = () => {
           </li>
         ))}
       </ul>
+      <div className="w-full h-[50px] bg-gradient-to-b from-black to-transparent"></div>
     </section>
   )
 }
