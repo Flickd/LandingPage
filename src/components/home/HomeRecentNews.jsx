@@ -32,7 +32,7 @@ const articles = [
 
 const HomeRecentNews = () => {
   return (
-    <section className="flex flex-col items-center justify-center w-full">
+    <section className="relative z-30 flex flex-col items-center justify-center w-full">
       <div className="w-full h-[50px] bg-gradient-to-t from-black to-transparent"></div>
       <ul className="flex flex-col flex-wrap items-center w-full px-12 bg-black md:items-start md:flex-row md:justify-around">
         {articles.map((article) => (

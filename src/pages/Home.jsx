@@ -5,7 +5,7 @@ import HomeSlideshow from '../components/home/HomeSlideshow'
 const Home = () => {
   return (
     <>
-      <div className="">
+      <div className="relative">
         <HomeHero />
         <HomeRecentNews />
         <HomeSlideshow />

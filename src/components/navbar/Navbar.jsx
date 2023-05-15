@@ -62,7 +62,7 @@ const Navbar = () => {
       id="navbar"
       className={`text-white ${
         extended ? `flex-col items-center h-full` : `h-24`
-      } fixed items-start pb-8 bg-gradient-to-b from-black via-[#100020] via-50% to-transparent flex lg:flex-row  lg:h-auto navbar duration-500 z-10`}
+      } fixed items-start pb-8 bg-gradient-to-b from-black via-[#100020] via-50% to-transparent flex lg:flex-row  lg:h-auto navbar duration-500 z-50`}
     >
       <div className="flex  items-center justify-between w-screen px-12  py-4 text-[16px]">
         <div className="flex items-center gap-12">

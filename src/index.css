@@ -7,6 +7,10 @@
   src: url('./fonts/Nunito/Nunito-Regular.ttf');
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .fontNunitoRegular {
   font-family: nunitoRegular;
 }

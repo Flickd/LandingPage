@@ -8,14 +8,14 @@ const Layout = () => {
     const parallaxBg = document.querySelector('#background')
     window.addEventListener('scroll', function () {
       const scrolled = window.pageYOffset
-      parallaxBg.style.backgroundPositionY = -(scrolled * 0.3) + 'px'
+      parallaxBg.style.backgroundPositionY = -(scrolled * 0.4) + 'px'
     })
   })
 
   return (
     <div
       id="background"
-      className="text-white bg-[url('./assets/WebPSeamless_Background.webp')] fontNunitoRegular pb-[300px] bg-fixed bg-cover"
+      className="text-white bg-[url('./assets/WebPSeamless_Background.webp')] fontNunitoRegular pb-[300px] bg-fixed bg-cover overflow-x-hidden"
     >
       <Navbar />
       <Outlet />

@@ -6,7 +6,7 @@ import { BsDiscord, BsTiktok } from 'react-icons/bs'
 
 const Footer = () => {
   return (
-    <section className="absolute w-full text-white flex flex-col items-center py-6  bg-gradient-to-t from-black via-[#100020] via-50% to-transparent">
+    <section className="absolute w-full text-white flex flex-col items-center py-6  bg-gradient-to-t from-black via-[#100020] via-50% to-transparent z-40">
       <img src={logo} alt="" />
       <p className="flex gap-8 mt-8">
         <a href="https://discord.com/invite/galaxylife">

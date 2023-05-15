@@ -48,7 +48,7 @@ const HomeSlideshow = () => {
   }
 
   return (
-    <section className="flex flex-col items-center my-40">
+    <section className="relative z-10 flex flex-col items-center my-40">
       <div className="flex items-center justify-center gap-8">
         <div
           onClick={prevSlide}
