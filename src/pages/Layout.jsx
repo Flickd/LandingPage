@@ -8,7 +8,7 @@ const Layout = () => {
     const parallaxBg = document.querySelector('#background')
     window.addEventListener('scroll', function () {
       const scrolled = window.pageYOffset
-      parallaxBg.style.backgroundPositionY = -(scrolled * 0.4) + 'px'
+      parallaxBg.style.backgroundPositionY = -(scrolled * 0.3) + 'px'
     })
   })
 

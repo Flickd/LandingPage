@@ -1,6 +1,6 @@
 import logo from '../../assets/LOGO_GL_RECREATION.png'
 import Animated_Button from '../../assets/Animated_Button.gif'
-import RedGalaxy2 from '../../assets/RedGalaxy.webm'
+import RedGalaxy from '../../assets/RedGalaxy.webm'
 import { useEffect } from 'react'
 
 const HomeHero = () => {
@@ -9,14 +9,25 @@ const HomeHero = () => {
     window.addEventListener('scroll', function () {
       const scrolled = window.pageYOffset
       parallaxBg.style.position = 'relative'
-      parallaxBg.style.transform = 'translateY(' + scrolled * 0.7 + 'px)'
-      parallaxBg.style.zIndex = '1'
+      parallaxBg.style.transform = 'translateY(' + scrolled * 0.6 + 'px)'
+      parallaxBg.style.zIndex = '0'
+    })
+  })
+
+  useEffect(() => {
+    const parallaxBg = document.querySelector('#redGalaxy2')
+    window.addEventListener('scroll', function () {
+      const scrolled = window.pageYOffset
+      parallaxBg.style.position = 'absolute'
+      parallaxBg.style.transform =
+        'translate(30%, ' + (200 + scrolled * 0.6) + 'px)'
+      parallaxBg.style.zIndex = '0'
     })
   })
 
   return (
     <section className="relative z-0 w-full flex lg:flex-row flex-col items-center justify-start lg:w-[140%]">
-      <div className="flex flex-col items-center lg:ml-[10%]">
+      <div className="relative z-10 flex flex-col items-center lg:ml-[10%]">
         <img
           src={logo}
           alt="GL_logo"
@@ -32,9 +43,18 @@ const HomeHero = () => {
       </div>
 
       <video
-        src={RedGalaxy2}
+        src={RedGalaxy}
         id="redGalaxy"
-        className="w-[70%] translate-y-0 z-[1]"
+        className="hidden lg:block relative w-[70%] -translate-y-[100px] lg:translate-y-0 z-0"
+        loop={true}
+        autoPlay={true}
+        muted={true}
+      ></video>
+
+      <video
+        src={RedGalaxy}
+        id="redGalaxy2"
+        className="absolute z-0 block w-full translate-x-[30%] translate-y-[200px] lg:hidden lg:translate-y-0"
         loop={true}
         autoPlay={true}
         muted={true}

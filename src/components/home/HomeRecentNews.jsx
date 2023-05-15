@@ -36,8 +36,8 @@ const HomeRecentNews = () => {
       <div className="w-full h-[50px] bg-gradient-to-t from-black to-transparent"></div>
       <ul className="flex flex-col flex-wrap items-center w-full px-12 bg-black md:items-start md:flex-row md:justify-around">
         {articles.map((article) => (
-          <li className="flex flex-col items-center my-8 w-[384px]">
-            <div className=" flex flex-col  h-[256px] gap-2">
+          <li className="flex flex-col items-center my-8 md:w-[384px]">
+            <div className=" flex flex-col  min-h-[256px] gap-2">
               <div className="flex gap-2">
                 <img
                   src={article.img}
