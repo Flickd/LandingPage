@@ -1,9 +1,9 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import News from './pages/News'
 import NotFound from './pages/NotFound'
 import Layout from './pages/Layout'
-import NewsPatchnotes from './components/NewsPatchnotes'
+import Patchnotes from './components/Patchnotes'
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="home/" element={<Home />} />
           <Route path="news/" element={<News />} />
-          <Route path="patchnotes/" element={<NewsPatchnotes />} />
+          <Route path="patchnotes/" element={<Patchnotes />} />
         </Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>

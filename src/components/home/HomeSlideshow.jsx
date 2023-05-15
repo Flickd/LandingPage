@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-import wallpaper1 from '../assets/wallpaper1.png'
-import wallpaper2 from '../assets/wallpaper2.jpg'
-import wallpaper3 from '../assets/wallpaper3.jpg'
+import wallpaper1 from '../../assets/wallpaper1.png'
+import wallpaper2 from '../../assets/wallpaper2.jpg'
+import wallpaper3 from '../../assets/wallpaper3.jpg'
 
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import { RxDotFilled } from 'react-icons/rx'

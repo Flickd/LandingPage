@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
-import Footer from '../components/Footer'
-import NewsBlockImg from '../components/NewsBlock'
+import NewsBlockImg from '../components/news/NewsBlock'
 
 import easter from '../assets/easter.png'
 import christmas from '../assets/Christmas.jpg'

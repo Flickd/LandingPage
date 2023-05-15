@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import easter from '../assets/Easter_update_q.png'
-import dc from '../assets/LOGO_GL_XMAS.png'
-import silo from '../assets/gl_Silo.webp'
+import easter from '../../assets/Easter_update_q.png'
+import dc from '../../assets/LOGO_GL_XMAS.png'
+import silo from '../../assets/gl_Silo.webp'
 
 const articles = [
   {

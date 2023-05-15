@@ -55,6 +55,7 @@ const navLinks = [
 const Navbar = () => {
   const [extended, setExtended] = useState(false)
   const [logIn, setLogIn] = useState(false)
+  const [results, setResults] = useState([])
 
   return (
     <div
@@ -68,7 +69,7 @@ const Navbar = () => {
           <img src={logo} alt="Logo" className="w-[164px]" />
           <ul className="hidden gap-12 font-bold lg:flex">
             <li className="hover:text-[#fb7a0c]">
-              <Link to={'LandingPage/Home'}>
+              <Link to={'/LandingPage/home'}>
                 <div className="flex flex-row items-center gap-2">
                   <RxHome />
                   Home
@@ -103,7 +104,8 @@ const Navbar = () => {
         </div>
 
         <div className="items-center hidden gap-6 font-bold lg:flex">
-          <Search />
+          <SearchBar setResults={setResults} />
+          <SearchResultsList results={results} />
           <div>
             <a
               href="#"
@@ -115,7 +117,12 @@ const Navbar = () => {
             </a>
           </div>
 
-          <Button />
+          <a
+            href="https://store.steampowered.com/app/1927780/Galaxy_Life/"
+            className="flex items-center font-bold px-6 py-2 bg-[#fb7a0c] rounded-full border-2 border-[#fb7a0c] hover:border-white duration-300"
+          >
+            PLAY NOW
+          </a>
         </div>
 
         <button
@@ -153,22 +160,69 @@ const Navbar = () => {
   )
 }
 
-const Search = () => {
+const SearchBar = ({ setResults }) => {
+  const [input, setInput] = useState('')
+
+  const fetchData = (value) => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((response) => response.json())
+      .then((json) => {
+        const results = json.filter((user) => {
+          return (
+            value &&
+            user &&
+            user.username &&
+            user.username.toLowerCase().includes(value)
+          )
+        })
+        setResults(results)
+      })
+  }
+
+  const handleChange = (value) => {
+    setInput(value)
+    fetchData(value)
+  }
+
   return (
-    <p className="px-1 py-1 border-2 border-[#fb7a0c] hover:border-white hover:text-[#fb7a0c] rounded-full duration-300">
-      <HiOutlineSearch size={'28px'} />
-    </p>
+    <form
+      action=""
+      className="w-[256px] flex flex-row border-2 border-[#fb7a0c] rounded-full justify-between px-2 py-1"
+    >
+      <input
+        onChange={(e) => handleChange(e.target.value)}
+        type="text"
+        name="search"
+        placeholder="Search here"
+        className="px-2 bg-transparent rounded-full outline-none"
+      />
+      <button type="submit">
+        <HiOutlineSearch size={'24px'} />
+      </button>
+    </form>
   )
 }
 
-const Button = () => {
+const SearchResultsList = ({ results }) => {
   return (
-    <a
-      href="https://store.steampowered.com/app/1927780/Galaxy_Life/"
-      className="flex items-center font-bold px-6 py-2 bg-[#fb7a0c] rounded-full border-2 border-[#fb7a0c] hover:border-white duration-300"
-    >
-      PLAY NOW
-    </a>
+    <div className="absolute flex flex-col overflow-y-auto top-20 max-h-80 min-w-[256px]">
+      {results.map((result, id) => {
+        return (
+          <div key={id}>
+            <SearchResult result={result} />
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+const SearchResult = ({ result }) => {
+  return (
+    <div className="flex flex-row gap-2 p-3 border-2 border-transparent hover:border-[#fb7a0c]">
+      <div>{result.id}</div>
+      <div>{result.username}</div>
+    </div>
   )
 }
 

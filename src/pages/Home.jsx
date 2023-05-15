@@ -1,6 +1,6 @@
-import HomeHero from '../components/HomeHero'
-import HomeRecentNews from '../components/HomeRecentNews'
-import HomeSlideshow from '../components/HomeSlideshow'
+import HomeHero from '../components/home/HomeHero'
+import HomeRecentNews from '../components/home/HomeRecentNews'
+import HomeSlideshow from '../components/home/HomeSlideshow'
 
 const Home = () => {
   return (
