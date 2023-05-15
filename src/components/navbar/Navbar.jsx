@@ -10,10 +10,16 @@ import { Link } from 'react-router-dom'
 
 const navLinks = [
   {
+    icon: <RxHome />,
+    title: 'Home',
+    link: 'LandingPage/home',
+    sublinks: [],
+  },
+  {
     icon: <RxEnvelopeClosed />,
     title: 'News',
     link: 'LandingPage/news',
-    sublink: [
+    sublinks: [
       {
         title: 'General',
         link: 'LandingPage/general',
@@ -29,33 +35,33 @@ const navLinks = [
     ],
   },
   {
-    icon: <RxBackpack />,
-    title: 'Shop',
-    link: 'LandingPage/shop',
-    sublink: [
-      {
-        title: 'Shop',
-        link: 'LandingPage/shop',
-      },
-    ],
-  },
-  {
     icon: <MdLeaderboard />,
     title: 'Leaderboard',
     link: 'LandingPage/leaderboard',
-    sublink: [
+    sublinks: [
+      {
+        title: 'Player',
+        link: 'LandingPage/player',
+      },
       {
         title: 'Alliance',
         link: 'LandingPage/alliance',
       },
     ],
   },
+  {
+    icon: <RxBackpack />,
+    title: 'Shop',
+    link: 'LandingPage/shop',
+    sublinks: [],
+  },
 ]
 
 const Navbar = () => {
   const [extended, setExtended] = useState(false)
   const [logIn, setLogIn] = useState(false)
-  const [results, setResults] = useState([])
+  const [resultsPlayer, setResultsPlayer] = useState([])
+  const [resultsAlliance, setResultsAlliance] = useState([])
 
   return (
     <div
@@ -64,18 +70,10 @@ const Navbar = () => {
         extended ? `flex-col items-center h-full` : `h-24`
       } fixed items-start pb-8 bg-gradient-to-b from-black via-[#100020] via-50% to-transparent flex lg:flex-row  lg:h-auto navbar duration-500 z-50`}
     >
-      <div className="flex  items-center justify-between w-screen px-12  py-4 text-[16px]">
+      <div className="flex  items-center justify-between w-screen px-16  py-4 text-[16px]">
         <div className="flex items-center gap-12">
           <img src={logo} alt="Logo" className="w-[164px]" />
           <ul className="hidden gap-12 font-bold lg:flex">
-            <li className="hover:text-[#fb7a0c]">
-              <Link to={'/LandingPage/home'}>
-                <div className="flex flex-row items-center gap-2">
-                  <RxHome />
-                  Home
-                </div>
-              </Link>
-            </li>
             {navLinks.map((navLink) => (
               <li className="group">
                 <div className="z-10 flex flex-col justify-center">
@@ -86,11 +84,16 @@ const Navbar = () => {
                     </div>
                   </Link>
                 </div>
-                <ul className="absolute hidden pt-8 top-12 group-hover:block hover:block">
-                  <div className="flex flex-col gap-4 px-6 py-6 bg-blue-950 rounded-xl">
-                    <div className="absolute w-4 h-4 rotate-45 bg-blue-950 translate-y-[-200%]"></div>
-                    {navLink.sublink.map((slink) => (
-                      <li>
+                <ul
+                  className={`${
+                    navLink.sublinks.length === 0
+                      ? 'hover:hidden  group-hover:hidden'
+                      : 'hover:block  group-hover:block'
+                  } absolute hidden pt-8 top-12`}
+                >
+                  <div className="flex flex-col border-2 border-white bg-[#100020] rounded-xl overflow-hidden">
+                    {navLink.sublinks.map((slink) => (
+                      <li className="hover:bg-white p-3 hover:text-[#100020] cursor-pointer">
                         <Link to={slink.link}>
                           <div>{slink.title}</div>
                         </Link>
@@ -104,8 +107,14 @@ const Navbar = () => {
         </div>
 
         <div className="items-center hidden gap-6 font-bold lg:flex">
-          <SearchBar setResults={setResults} />
-          <SearchResultsList results={results} />
+          <SearchBar
+            setResultsPlayer={setResultsPlayer}
+            setResultsAlliance={setResultsAlliance}
+          />
+          <SearchResultsList
+            resultsPlayer={resultsPlayer}
+            resultsAlliance={resultsAlliance}
+          />
           <div>
             <a
               href="#"
@@ -160,14 +169,15 @@ const Navbar = () => {
   )
 }
 
-const SearchBar = ({ setResults }) => {
-  const [input, setInput] = useState('')
+const SearchBar = ({ setResultsPlayer, setResultsAlliance }) => {
+  const [inputPlayer, setInputPlayer] = useState('')
+  const [inputAlliance, setInputAlliance] = useState('')
 
-  const fetchData = (value) => {
+  const fetchDataPlayer = (value) => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json())
       .then((json) => {
-        const results = json.filter((user) => {
+        const resultsPlayer = json.filter((user) => {
           return (
             value &&
             user &&
@@ -175,51 +185,99 @@ const SearchBar = ({ setResults }) => {
             user.username.toLowerCase().includes(value)
           )
         })
-        setResults(results)
+        setResultsPlayer(resultsPlayer)
+      })
+  }
+
+  const fetchDataAlliance = (value) => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((response) => response.json())
+      .then((json) => {
+        const resultsAlliance = json.filter((user) => {
+          return (
+            value &&
+            user &&
+            user.name &&
+            user.name.toLowerCase().includes(value)
+          )
+        })
+        setResultsAlliance(resultsAlliance)
       })
   }
 
   const handleChange = (value) => {
-    setInput(value)
-    fetchData(value)
+    setInputPlayer(value)
+    setInputAlliance(value)
+    fetchDataPlayer(value)
+    fetchDataAlliance(value)
   }
 
   return (
     <form
-      action=""
-      className="w-[256px] flex flex-row border-2 border-[#fb7a0c] rounded-full justify-between px-2 py-1"
+      className="w-[320px] flex flex-row border-2 border-[#fb7a0c] rounded-full justify-between px-2 py-1"
+      autoComplete="off"
     >
       <input
         onChange={(e) => handleChange(e.target.value)}
         type="text"
         name="search"
-        placeholder="Search here"
-        className="px-2 bg-transparent rounded-full outline-none"
+        placeholder="Search for player or alliance"
+        className="w-full px-2 bg-transparent rounded-full outline-none"
+        autoComplete=""
       />
-      <button type="submit">
-        <HiOutlineSearch size={'24px'} />
-      </button>
+      <HiOutlineSearch size={'24px'} />
     </form>
   )
 }
 
-const SearchResultsList = ({ results }) => {
+const SearchResultsList = ({ resultsPlayer, resultsAlliance }) => {
   return (
-    <div className="absolute flex flex-col overflow-y-auto top-20 max-h-80 min-w-[256px]">
-      {results.map((result, id) => {
-        return (
-          <div key={id}>
-            <SearchResult result={result} />
-          </div>
-        )
-      })}
+    <div
+      className={`absolute flex flex-col overflow-y-auto top-20 max-h-96 min-w-[256px] overflow-hidden bg-[#100020] ${
+        resultsPlayer.length === 0 && resultsAlliance.length === 0
+          ? 'hidden'
+          : 'block'
+      } border-2 border-white rounded-xl`}
+    >
+      <div
+        className={`p-3 bg-white text-[#100020] ${
+          resultsPlayer.length === 0 ? 'hidden' : 'block'
+        }`}
+      >
+        Players:
+      </div>
+      <div className={`flex flex-col`}>
+        {resultsPlayer.map((resultPlayer, id) => {
+          return (
+            <div key={id}>
+              <SearchResult result={resultPlayer} />
+            </div>
+          )
+        })}
+      </div>
+      <div
+        className={`p-3 bg-white text-[#100020] ${
+          resultsAlliance.length === 0 ? 'hidden' : 'block'
+        }`}
+      >
+        Alliances:
+      </div>
+      <div className={`flex flex-col`}>
+        {resultsAlliance.map((resultAlliance, id) => {
+          return (
+            <div key={id}>
+              <SearchResult result={resultAlliance} />
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
 
 const SearchResult = ({ result }) => {
   return (
-    <div className="flex flex-row gap-2 p-3 border-2 border-transparent hover:border-[#fb7a0c]">
+    <div className="flex flex-row gap-2 p-3 hover:bg-white hover:text-[#100020] cursor-pointer">
       <div>{result.id}</div>
       <div>{result.username}</div>
     </div>
