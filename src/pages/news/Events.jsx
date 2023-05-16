@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import NewsBlockImg from '../../components/news/EventsBlock'
 
-import { news } from './EventsData'
+import { news } from './data'
 
 const Events = () => {
   useEffect(() => {

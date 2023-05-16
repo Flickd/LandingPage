@@ -1,6 +1,6 @@
 import PatchnotesBlock from '../../components/news/PatchnotesBlock'
 
-import { patchnotes } from './PatchnotesData'
+import { patchnotes } from './data'
 
 const Patchnotes = () => {
   return (
