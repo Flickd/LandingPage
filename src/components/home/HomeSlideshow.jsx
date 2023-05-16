@@ -48,7 +48,7 @@ const HomeSlideshow = () => {
   }
 
   return (
-    <section className="relative z-10 flex flex-col items-center my-40">
+    <section className="relative z-10 flex flex-col py-20 rounded-3xl items-center my-60 border-2 bg-[#100020] border-white w-[75%]">
       <div className="flex items-center justify-center gap-8">
         <div
           onClick={prevSlide}
@@ -59,7 +59,7 @@ const HomeSlideshow = () => {
 
         <div
           style={{ backgroundImage: `url(${slides[currentImg].url})` }}
-          className="lg:w-[854px] xl:h-[480px] duration-500 bg-center bg-cover rounded-3xl "
+          className="lg:w-[854px] xl:h-[480px] duration-500 bg-center bg-cover rounded-2xl "
         ></div>
 
         <div

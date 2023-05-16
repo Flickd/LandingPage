@@ -18,19 +18,19 @@ const navLinks = [
   {
     icon: <RxEnvelopeClosed />,
     title: 'News',
-    link: 'LandingPage/news',
+    link: 'LandingPage/news/events',
     sublinks: [
       {
-        title: 'General',
-        link: 'LandingPage/general',
+        title: 'Events',
+        link: 'news/events',
       },
       {
         title: 'Patchnotes',
-        link: 'LandingPage/patchnotes',
+        link: 'news/patchnotes',
       },
       {
         title: 'Community',
-        link: 'LandingPage/community',
+        link: 'news/community',
       },
     ],
   },
@@ -41,11 +41,11 @@ const navLinks = [
     sublinks: [
       {
         title: 'Player',
-        link: 'LandingPage/player',
+        link: 'leaderboard/player',
       },
       {
         title: 'Alliance',
-        link: 'LandingPage/alliance',
+        link: 'leaderboard/alliance',
       },
     ],
   },
@@ -93,9 +93,11 @@ const Navbar = () => {
                 >
                   <div className="flex flex-col border-2 border-white bg-[#100020] rounded-xl overflow-hidden">
                     {navLink.sublinks.map((slink) => (
-                      <li className="hover:bg-white p-3 hover:text-[#100020] cursor-pointer">
+                      <li>
                         <Link to={slink.link}>
-                          <div>{slink.title}</div>
+                          <div className="hover:bg-white p-3 hover:text-[#100020] cursor-pointer">
+                            {slink.title}
+                          </div>
                         </Link>
                       </li>
                     ))}
